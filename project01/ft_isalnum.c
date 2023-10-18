@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isascii.c                                          :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hadamaalanis <alanis.hadama@gmail.com>     +#+  +:+       +#+        */
+/*   By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 14:35:17 by hadamaalanis      #+#    #+#             */
-/*   Updated: 2023/10/17 14:42:59 by hadamaalanis     ###   ########.fr       */
+/*   Created: 2023/10/16 15:48:33 by ahadama-          #+#    #+#             */
+/*   Updated: 2023/10/18 12:31:00 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-int	ft_isacii(int c)
+int	ft_isalnum(int c)
 {
-	return (c >= 0 && c < 128);
+	if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z')
+		|| (c >= 'a' && c <= 'z'))
+		return (c);
+	return (0);
 }

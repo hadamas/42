@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   isdigit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 12:32:47 by ahadama-          #+#    #+#             */
-/*   Updated: 2023/10/18 16:32:28 by ahadama-         ###   ########.fr       */
+/*   Created: 2023/10/16 15:45:54 by ahadama-          #+#    #+#             */
+/*   Updated: 2023/10/16 15:47:59 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-//#include <stdio.h>
-int	ft_strlen(const char *s)
+int	ft_isdigit(int c)
 {
-	size_t		len;
-
-	len = 0;
-	while (*s++)
-		len++;
-	return (len);
+	if (c >= '0' && c <= '9')
+		return (c);
+	return (0);
 }
-/*
-int	main(void)
-{
-	char *a = "alanis";
-	printf("%d", ft_strlen(a));
-}*/

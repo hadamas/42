@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   isalpha.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 12:32:47 by ahadama-          #+#    #+#             */
-/*   Updated: 2023/10/18 16:32:28 by ahadama-         ###   ########.fr       */
+/*   Created: 2023/10/16 15:31:39 by ahadama-          #+#    #+#             */
+/*   Updated: 2023/10/16 15:45:38 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
-int	ft_strlen(const char *s)
-{
-	size_t		len;
 
-	len = 0;
-	while (*s++)
-		len++;
-	return (len);
-}
-/*
-int	main(void)
+int	ft_isalpha(int c)
 {
-	char *a = "alanis";
-	printf("%d", ft_strlen(a));
-}*/
+	if ((c >= 'A' && <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (c);
+	return (0);
+}
