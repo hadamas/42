@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcpy.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,15 +14,15 @@
 
 void	*ft_memcpy(void *dest, const void * src, size_t n)
 {
-	unsigned char	*ds;
-	unsigned const char	*sr;
+	size_t i;
 
-	if (!dest || !src)
+	if (!dest && !src)
 		return (0);
-	ds = dest;
-	sr = src;
-
-	while (n-- > 0)
-		*ds++ = *sr++;
-	return (ds);
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		i++;
+	}
+	return (dest);
 }
