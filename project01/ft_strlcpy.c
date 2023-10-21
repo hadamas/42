@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 15:31:46 by ahadama-          #+#    #+#             */
-/*   Updated: 2023/10/20 10:59:11 by ahadama-         ###   ########.fr       */
+/*   Created: 2023/10/20 11:03:46 by ahadama-          #+#    #+#             */
+/*   Updated: 2023/10/20 11:24:59 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	size_t		i;
+/*strlcpy - size bounded string copying and concatenation */
 
-	if (!dest && !src)
-		return (0);
+size_t	strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+
 	i = 0;
-	while (i < n)
+	while (*src && i + 1 < n)
 	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-		i++;
+		*dst++ = *src++;
+		++i;
 	}
-	return (dest);
+	if (i < dstsize)
+		*dst = 0;
+	while (*src++)
+		++i;
+	return (i);
 }
