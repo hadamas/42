@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/21 14:14:49 by ahadama-          #+#    #+#             */
-/*   Updated: 2023/10/23 14:40:43 by ahadama-         ###   ########.fr       */
+/*   Created: 2023/10/23 14:08:09 by ahadama-          #+#    #+#             */
+/*   Updated: 2023/10/23 14:41:43 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_strlen(const char *s)
+static size_t	strlen(const char *s)
 {
 	int	i;
 
@@ -22,15 +22,23 @@ static size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+static char	*ft_strcpy(char *dest, char *src)
 {
-	char	*result;
+	int	i;
 
-	if (ft_strlen(s) < start)
-		return(ft_strdup(""));
-	if (!(result = (char *)malloc(sizeof (char * (len +1)))))
+	i = 0;
+	while (src++ != '\0')
+		dest[i] = src[i];
+	dest[i] = '\0';
+	return (dest);
+}
+
+char	*ft_strdup(char *src)
+{
+	char	*target;
+
+	target = malloc(ft_strlen(src) * sizeof(char) + 1);
+	if (target == NULL)
 		return (NULL);
-	memcpy(result, s + start, len);
-	result[len] = '\0';
-	return(result);
+	return (ft_strcpy(target, src));
 }
