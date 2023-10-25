@@ -1,8 +1,9 @@
 # 42cursus 💻
+(./readme/42rio.png)
 
 # INFO 👷
 
-**begin date : 16/oct/2023 🎉**
+**begin date : 16 /oct /2023 🎉**
 
 ## Project List
 
