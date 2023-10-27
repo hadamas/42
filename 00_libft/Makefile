@@ -6,24 +6,18 @@
 #    By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 16:30:23 by ahadama-          #+#    #+#              #
-#    Updated: 2023/10/24 10:31:51 by ahadama-         ###   ########.fr        #
+#    Updated: 2023/10/27 12:26:56 by ahadama-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-
-AR = ar
-ARFLAGS = crs
-
+AR = ars -rcs
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-
-RM = rm
-RMFLAG = -f
-
+RM = rm -f
 INCLUDE = ./libft.h
 
-SOURCES_PART1  = ft_isalpha.c \
+SRC_PART1  = ft_isalpha.c \
 		 ft_isdigit.c \
 		 ft_isalnum.c \
 		 ft_isascii.c \
@@ -47,7 +41,7 @@ SOURCES_PART1  = ft_isalpha.c \
 		 ft_calloc.c \
 		 ft_strdup.c \
 
-SOURCES_PART2 = ft_substr.c \
+SRC_PART2 = ft_substr.c \
 		ft_strjoin.c \
 		ft_strtrim.c \
 		ft_split.c \
@@ -59,17 +53,25 @@ SOURCES_PART2 = ft_substr.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
 
-SOURCES = $(SOUCES_PART1) $(SOURCES_PART2)
+SRC = $(SRC_PART1) $(SRC_PART2)
+OBJ = $(SRC:.c = .o)
 
-OBJS = $(SRCS:.c = .O)
-
-all :	
-	$(NAME) $(SOURCES)
-
+all :	$(NAME)
+		
 clean:
-	$(RM) $(RMFLAG) $(OBJS)
+	$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(RMFLAG) $(NAME)	
+	$(RM) $(NAME)	
 
 re: fclean all
+
+$(NAME) : $(OBJS)
+	$(AR) $(NAME) $(OBJ)
+
+.c.o :  $(SRCS) $(INCLUDES)
+        $(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
+	gcc -nostartfiles -shared -o libft.so $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 14:22:19 by ahadama-          #+#    #+#             */
-/*   Updated: 2023/10/24 11:26:32 by ahadama-         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:19:35 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	len2;
 	char	*result;
 
-	len1 = strlen(s1);
-	len2 = strlen(s2);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
 	if (!(result = (char *)malloc(sizeof(char) + (len1 + len2 + 1))))
 		return (NULL);
 	ft_memcpy(result, s1, len1);
