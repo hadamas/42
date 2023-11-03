@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadama- <ahadama-@student.42.rio>         +#+  +:+       +#+        */
+/*   By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 15:19:55 by ahadama-          #+#    #+#             */
-/*   Updated: 2023/10/31 17:49:17 by ahadama-         ###   ########.fr       */
+/*   Created: 2023/10/20 11:03:46 by ahadama-          #+#    #+#             */
+/*   Updated: 2023/11/03 14:51:57 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+size_t	strlcpy(char *dst, const char *src, size_t size)
 {
-	if (s)
-	{
-		write(fd, s, ft_strlen(s));
-		write(fd, "\n", ft_strlen(s));
-	}
-}
+	size_t	i;
 
-int	main(void)
-{
-	int	a = 2;
-	char	*b = "lalalala ";
-	ft_putendl_fd(b, a);
+	i = 0;
+	if (size > 0)
+	{
+		while (i < size - 1 && src[i] != '\0')
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	while (src[i] != '\0')
+		i++;
+	return (i);
 }

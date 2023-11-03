@@ -1,44 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 14:08:09 by ahadama-          #+#    #+#             */
-/*   Updated: 2023/10/23 14:41:43 by ahadama-         ###   ########.fr       */
+/*   Created: 2023/10/20 15:30:54 by ahadama-          #+#    #+#             */
+/*   Updated: 2023/11/03 15:25:16 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	strlen(const char *s)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int	i;
+	size_t	i;
+	const unsigned char	*str;
 
 	i = 0;
-	while (s[i] != '\0')
+	str = s;
+	while (i < n)
+	{
+		if (str[i] == (unsigned char)c)
+			return ((void *)(s + 1));
 		i++;
-	return (i);
-}
-
-static char	*ft_strcpy(char *dest, char *src)
-{
-	int	i;
-
-	i = 0;
-	while (src++ != '\0')
-		dest[i] = src[i];
-	dest[i] = '\0';
-	return (dest);
-}
-
-char	*ft_strdup(char *src)
-{
-	char	*target;
-
-	target = malloc(ft_strlen(src) * sizeof(char) + 1);
-	if (target == NULL)
-		return (NULL);
-	return (ft_strcpy(target, src));
+	}
+	return (NULL);
 }

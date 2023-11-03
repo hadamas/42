@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 15:30:54 by ahadama-          #+#    #+#             */
-/*   Updated: 2023/10/20 15:43:14 by ahadama-         ###   ########.fr       */
+/*   Created: 2023/10/20 15:53:57 by ahadama-          #+#    #+#             */
+/*   Updated: 2023/11/03 16:49:09 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	i;
+	size_t	b;
+	size_t	l;
 
-	i = 0;
-	while (i < n)
+	if (little[0] == 0)
+		return ((char *)big);
+	b = 0;
+	while (big[b] != '\0')
 	{
-		if ((unsigned char *)s[i] == (unsigned char)c)
-			return ((void *)(s + 1));
-		i++;
+		l = 0;
+		while (big[b + l] == little[l] && (b + l) < len)
+		{
+			if (big[b + l] == '\0' && little[l] == '\0')
+				return ((char *)&big[b]);
+			l++;
+		}
+		if (little[l] == '\0')
+			return ((char *)big + b);
+		b++;
 	}
 	return (0);
 }

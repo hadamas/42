@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 15:53:57 by ahadama-          #+#    #+#             */
-/*   Updated: 2023/10/20 16:20:09 by ahadama-         ###   ########.fr       */
+/*   Created: 2023/10/23 14:08:09 by ahadama-          #+#    #+#             */
+/*   Updated: 2023/11/03 16:41:52 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*strnstr(const char *big, const char *little, size_t len);
+char	*ft_strdup(const char *s)
 {
-	size_t	b;
-	size_t	l;
+	char	*result;
 
-	if (little[0] == 0)
-		return ((char *)big);
-	b = 0;
-	while (big[b] != '\0')
-	{
-		l = 0;
-		while (big[b + l] == little[l] && (b + l) < len)
-		{
-			if (big[b + l] == '\0' && little[l] == '\0')
-				return ((char *)&big[b]);
-			l++;
-		}
-		if (little[l] == '\0')
-			return ((char *)big + b);
-		b++;
-	}
-	return (0);
+	if (!(result = malloc(ft_strlen(s) + 1)))
+		return (0);
+	ft_memcpy(result, s, ft_strlen(s) + 1);
+	return (result);
 }

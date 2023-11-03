@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 11:27:48 by ahadama-          #+#    #+#             */
-/*   Updated: 2023/10/26 14:45:38 by ahadama-         ###   ########.fr       */
+/*   Created: 2023/10/20 11:25:16 by ahadama-          #+#    #+#             */
+/*   Updated: 2023/11/03 14:53:28 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int	len;
-	char	*result;
+	size_t	dstlen;
+	size_t	srclen;
+	size_t	c;
+	size_t	d;
 
-	while (s1 && (ft_strchr(*s1, set) ) != '\0')
-		*s1++;
-	len = ft_strlen(s1);
-	while(len && s1[len - 1] && ft_strchr(set, s1[len - 1]) != 0)
-		len--;
-	if (!(result = (char *)malloc(sizeof(char) * (len + 1))))
-		return (0)
-	ft_memcpy(result, s1, len);
-	result[len] = '\0';
-	return (result);
+	dstlen = 0;
+	srclen = 0;
+	while (*dst++)
+		dstlen++;
+	while (*src++)
+		srclen++;
+	if (size <= dstlen)
+		return (size + srclen);
+	c = dstlen;
+	d = 0;
+	while (src[d] != '\0' && c + 1 < size)
+	{
+		dst[c] = src[d];
+		c++;
+		d++;
+	}
+	dst[c] = '\0';
+	return (dstlen + ft_strlen(&src[d]));
 }
