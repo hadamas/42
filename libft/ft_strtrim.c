@@ -6,7 +6,7 @@
 /*   By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:27:48 by ahadama-          #+#    #+#             */
-/*   Updated: 2023/11/03 16:28:30 by ahadama-         ###   ########.fr       */
+/*   Updated: 2023/11/05 14:14:38 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	len;
-	char	*result;
+	size_t	i;
 
-	while ((s1 && ft_strchr(set, *s1)) != '\0')
-		s1++;
-	len = ft_strlen(s1);
-	while(len && s1[len - 1] && ft_strchr(set, s1[len - 1]) != 0)
-		len--;
-	if (!(result = (char *)malloc(sizeof(char) * (len + 1))))
+	if (!s1 || !set)
 		return (0);
-	result = ft_memcpy(result, s1, len);
-	result[len] = '\0';
-	return (result);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	i = ft_strlen(s1);
+	while (i && ft_strchr(set, s1[i]))
+		i--;
+	return (ft_substr(s1, 0, i + 1));
 }

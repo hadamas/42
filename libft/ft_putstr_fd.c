@@ -5,15 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahadama- <ahadama-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 15:06:41 by ahadama-          #+#    #+#             */
-/*   Updated: 2023/10/31 15:19:08 by ahadama-         ###   ########.fr       */
+/*   Created: 2023/11/05 15:15:43 by ahadama-          #+#    #+#             */
+/*   Updated: 2023/11/05 15:16:55 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-	while (s)
-		write(fd, &s, ft_strlen(s));
+	int	i;
+
+	if (s != NULL)
+	{
+		i = 0;
+		while (s[i])
+		{
+			ft_putchar_fd(s[i], fd);
+			i++;
+		}
+	}
 }

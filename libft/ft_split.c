@@ -6,7 +6,7 @@
 /*   By: ahadama- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 12:31:06 by ahadama-          #+#    #+#             */
-/*   Updated: 2023/10/27 14:07:17 by ahadama-         ###   ########.fr       */
+/*   Updated: 2023/11/05 16:41:04 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	count_words(const char *str, char c)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -46,14 +46,15 @@ static char	*word_dup(const char *str, int start, int finish)
 	return (word);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
 	int		index;
 	char	**split;
 
-	if (!s || !(split = malloc((count_words(s, c) + 1) * sizeof(char *))))
+	split = malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!s || !(split))
 		return (0);
 	i = 0;
 	j = 0;
@@ -71,9 +72,4 @@ char		**ft_split(char const *s, char c)
 	}
 	split[j] = 0;
 	return (split);
-}
-
-int	main(void)
-{
-	ft_split("alanis hadama", 32);
 }

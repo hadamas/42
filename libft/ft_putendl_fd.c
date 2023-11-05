@@ -6,7 +6,7 @@
 /*   By: ahadama- <ahadama-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:19:55 by ahadama-          #+#    #+#             */
-/*   Updated: 2023/11/03 19:33:51 by ahadama-         ###   ########.fr       */
+/*   Updated: 2023/11/05 16:39:45 by ahadama-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,7 @@ void	ft_putendl_fd(char *s, int fd)
 {
 	if (s)
 	{
-		write(fd, s, ft_strlen(s));
-		write(fd, "\n", ft_strlen(s));
+		ft_putstr_fd(s, fd);
+		ft_putchar_fd('\n', fd);
 	}
 }
-/*
-int	main(void)
-{
-	int	a = 2;
-	char	*b = "lalalala ";
-	ft_putendl_fd(b, a);
-}*/
